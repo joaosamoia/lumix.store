@@ -1,0 +1,86 @@
+<style>
+  .horizontal-ticker {
+    overflow: hidden;
+    background: rgb(var(--color-base-accent-1));
+    color: #fff;
+  }
+  .horizontal-ticker__container {
+    display: flex;
+    column-gap: 60px;
+    padding: 12px 0;
+    animation: horizontalTicker {{ section.settings.speed }}s linear infinite forwards;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .horizontal-ticker__item {
+    font-size: 1.75rem;
+    font-weight: var(--font-body-weight-bold);
+    letter-spacing: 0.08em;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  @keyframes horizontalTicker {
+    to { transform: translateX(calc(-50% - 30px)); }
+  }
+  @media screen and (min-width: 750px) {
+    .horizontal-ticker__container {
+      column-gap: 100px;
+      padding: 16px 0;
+    }
+    @keyframes horizontalTicker {
+      to { transform: translateX(calc(-50% - 50px)); }
+    }
+  }
+</style>
+
+<div class="horizontal-ticker">
+  <div class="horizontal-ticker__container">
+    {%- for i in (1..12) -%}
+      {%- for block in section.blocks -%}
+        <p class="horizontal-ticker__item">{{ block.settings.text }}</p>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "shopify-section-group-header-group",
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Animation speed (seconds)",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Announcement"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "blocks": [
+        { "type": "announcement", "settings": { "text": "WELCOME!" } },
+        { "type": "announcement", "settings": { "text": "FREE WORLDWIDE SHIPPING!" } },
+        { "type": "announcement", "settings": { "text": "INDIVIDUALLY HANDCRAFTED" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

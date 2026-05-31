@@ -1,0 +1,206 @@
+<!doctype html>
+<html class="js" lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+  {%- if settings.favicon != blank -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
+  {%- endif -%}
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+  </title>
+
+  {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+  {{ content_for_header }}
+
+  <style>
+    @font-face {
+      font-family: Poppins;
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+      src: url('{{ "poppins_n4.woff2" | asset_url }}') format('woff2');
+    }
+    @font-face {
+      font-family: Poppins;
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+      src: url('{{ "poppins_n7.woff2" | asset_url }}') format('woff2');
+    }
+
+    :root {
+      --font-body-family: Poppins, sans-serif;
+      --font-body-style: normal;
+      --font-body-weight: 400;
+      --font-body-weight-bold: 700;
+      --font-heading-family: Poppins, sans-serif;
+      --font-heading-style: normal;
+      --font-heading-weight: 700;
+      --font-heading-line-height: 1.3;
+      --font-heading-letter-spacing: 0.06rem;
+
+      --font-body-scale: 1.0;
+      --font-heading-scale: 1.3;
+
+      --color-base-text: 18, 18, 18;
+      --color-shadow: 18, 18, 18;
+      --color-base-background-1: 255, 255, 255;
+      --color-base-background-2: 247, 248, 251;
+      --color-base-solid-button-labels: 255, 255, 255;
+      --color-base-outline-button-labels: 38, 55, 127;
+      --color-base-accent-1: 38, 55, 127;
+      --color-base-accent-2: 56, 189, 248;
+      --payment-terms-background-color: #ffffff;
+
+      --gradient-base-background-1: #ffffff;
+      --gradient-base-background-2: #f7f8fb;
+      --gradient-base-accent-1: #26377f;
+      --gradient-base-accent-2: linear-gradient(54deg, rgba(221, 29, 29, 1) 14%, rgba(105, 14, 14, 1) 85%);
+
+      --media-padding: 0px;
+      --media-border-opacity: 0.1;
+      --media-border-width: 0px;
+      --media-radius: 12px;
+      --media-shadow-opacity: 0.0;
+      --media-shadow-horizontal-offset: 0px;
+      --media-shadow-vertical-offset: 0px;
+      --media-shadow-blur-radius: 20px;
+      --media-shadow-visible: 0;
+
+      --page-width: 140rem;
+      --page-width-margin: 0rem;
+
+      --product-card-image-padding: 0.0rem;
+      --product-card-corner-radius: 1.2rem;
+      --product-card-text-alignment: center;
+      --product-card-border-width: 0.0rem;
+      --product-card-border-opacity: 0.1;
+      --product-card-shadow-opacity: 0.1;
+      --product-card-shadow-visible: 1;
+      --product-card-shadow-horizontal-offset: 0.2rem;
+      --product-card-shadow-vertical-offset: 0.6rem;
+      --product-card-shadow-blur-radius: 1.0rem;
+
+      --badge-corner-radius: 0.6rem;
+      --buttons-radius: 6px;
+      --buttons-radius-outset: 8px;
+      --buttons-border-width: 2px;
+      --buttons-border-opacity: 1.0;
+      --buttons-shadow-opacity: 0.0;
+      --buttons-shadow-visible: 0;
+      --buttons-border-offset: 0.3px;
+
+      --inputs-radius: 6px;
+      --inputs-border-width: 1px;
+      --inputs-border-opacity: 0.55;
+
+      --variant-pills-radius: 40px;
+      --variant-pills-border-width: 1px;
+      --variant-pills-border-opacity: 0.55;
+
+      --spacing-sections-desktop: 0px;
+      --spacing-sections-mobile: 0px;
+    }
+
+    *, *::before, *::after { box-sizing: inherit; }
+
+    html {
+      box-sizing: border-box;
+      font-size: calc(var(--font-body-scale) * 62.5%);
+      height: 100%;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-columns: 100%;
+      min-height: 100%;
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.06em;
+      line-height: calc(1 + 0.8 / var(--font-body-scale));
+      font-family: var(--font-body-family);
+      font-style: var(--font-body-style);
+      font-weight: var(--font-body-weight);
+    }
+
+    @media screen and (min-width: 750px) {
+      body { font-size: 1.6rem; }
+    }
+
+    .button {
+      font-weight: var(--font-body-weight-bold);
+    }
+  </style>
+
+  {{ 'theme.css' | asset_url | stylesheet_tag }}
+
+  <script>
+    document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+</head>
+
+<body class="gradient">
+  <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+    Skip to content
+  </a>
+
+  {%- sections 'header-group' -%}
+
+  <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {%- sections 'footer-group' -%}
+
+  <ul hidden>
+    <li id="a11y-refresh-page-message">Choosing a selection results in a full page refresh.</li>
+    <li id="a11y-new-window-message">Opens in a new window.</li>
+  </ul>
+
+  <script>
+    window.shopUrl = '{{ shop.url }}';
+    window.routes = {
+      cart_add_url: '/cart/add',
+      cart_change_url: '/cart/change',
+      cart_update_url: '/cart/update',
+      cart_url: '/cart',
+      predictive_search_url: '/search/suggest',
+    };
+
+    window.cartStrings = {
+      error: 'There was an error while updating your cart. Please try again.',
+      quantityError: 'You can only add [quantity] of this item to your cart.',
+    };
+
+    window.variantStrings = {
+      addToCart: 'Add to cart',
+      soldOut: 'Sold out',
+      unavailable: 'Unavailable',
+      unavailable_with_option: '[value] - Unavailable',
+    };
+
+    window.accessibilityStrings = {
+      imageAvailable: 'Image [index] is now available in gallery view',
+      shareSuccess: 'Link copied to clipboard',
+      pauseSlideshow: 'Pause slideshow',
+      playSlideshow: 'Play slideshow',
+    };
+  </script>
+
+  {{ 'theme.js' | asset_url | script_tag }}
+</body>
+</html>
