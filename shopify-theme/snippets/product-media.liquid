@@ -1,0 +1,14 @@
+{%- comment -%}
+  Renders payment badges (used inside product info)
+{%- endcomment -%}
+{%- if shop.enabled_payment_types != empty -%}
+  <div class="payment-badges-block">
+    <ul class="payment-badges list-payment" role="list">
+      {%- for type in shop.enabled_payment_types -%}
+        <li class="list-payment__item">
+          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+{%- endif -%}

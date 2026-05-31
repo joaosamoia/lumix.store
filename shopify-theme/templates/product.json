@@ -1,0 +1,75 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "reviewer_name": "Sarah M.",
+            "review_text": "Super cool lamp I got it for my son who loves Godzilla and he hasn't stopped showing it to everyone. Looks insane at night! And the boy who makes them is a sweetheart."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "reviewer_name": "Jason M.",
+            "review_text": "Put it on my gaming desk and everybody keeps asking where I got it from. The inside looks crazy when the room is dark. Definitely not a normal lamp."
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "reviewer_name": "Alex C.",
+            "review_text": "I bought the Godzilla lamp as a gift and honestly almost kept it for myself. The resin detail, the rocks, the blue beam glow... it feels like a tiny movie scene. Super unique."
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "question": "How are the lamps made?",
+            "answer": "<p>Each lamp is handmade using layered resin, detailed miniature scenery, and an LED light base to create the glowing blue beam effect. The process includes placing the scene, pouring resin, curing, sanding, polishing, and preparing the lamp for shipment.<br><br>Because every piece is made by hand, small variations in resin texture, scenery placement, color, or finish may occur. That's part of what makes each lamp unique.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "question": "Do the lamps produce an animated effect like the videos?",
+            "answer": "<p>The lamp gives off a steady blue glow when turned on. Some videos may show cinematic lighting, close-ups, or creative effects to show the product in a more dramatic way, but the real lamp itself does not move or animate.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it come with a power cord and light?",
+            "answer": "<p>Yes, each lamp comes ready to use with an LED light source and power cable included. If your lamp includes a remote control, batteries may not be included due to shipping/customs restrictions. You may need to purchase batteries separately.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "question": "Returns & guarantees",
+            "answer": "<p>If your lamp arrives damaged, defective, or incorrect, contact us within 14 days of delivery with photos and we'll help make it right. Each lamp is handmade to order, so small variations in resin texture, color, scenery placement, and finish are normal. Change-of-mind returns may be accepted if the item is unused and in original condition. Return shipping may apply.</p>"
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3", "faq_1", "faq_2", "faq_3", "faq_4"],
+      "settings": {
+        "show_urgency_text": true,
+        "urgency_text": "HOT PRODUCT | LOW STOCK",
+        "show_rating": true,
+        "rating": 4.9,
+        "review_count": "40",
+        "show_benefits": true,
+        "benefits_text": "<p>🦖 Epic Godzilla display piece<br><br>💎 Glows like a movie scene (15+ Colors!)<br><br>🎁 A gift fans won't forget</p>",
+        "show_payment_badges": true,
+        "show_delivery_estimate": true,
+        "delivery_text": "Get it between <strong>15</strong> and <strong>25 days</strong> after ordering.",
+        "show_order_timeline": true,
+        "timeline_prep": "1-2 weeks",
+        "timeline_delivery": "2-4 weeks"
+      }
+    }
+  },
+  "order": ["main"]
+}
